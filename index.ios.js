@@ -25,7 +25,10 @@ export default class reactNativeHackreactor extends Component {
   componentDidMount() {
     const { dataSource } = this.state;
     const initialLoad_URL = BASE_URL + 'onload.json';
-
+    fetch(initialLoad_URL)
+    .then( (response) => response.json())
+    .then( (json) => { console.warn(json) }) // should be array of objects
+    .catch( () => console.warn("there was an error"));
   }
 
   render() {
